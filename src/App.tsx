@@ -1,58 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import cn from 'classnames';
+import React, { useState } from 'react';
+import Controls from './components/controls/Controls';
+import Preview from './components/preview';
+import TabHandler from './components/tabs/TabHandler';
+import './styles/app.css';
+import { Tab } from './types/Tab';
 
-function App() {
+const App = () => {
+  const [currentTab, setCurrentTab] = useState(Tab.PERSONAL);
+  const [showPreview, setShowPreview] = useState(false);
+  const togglePreview = (set?: boolean) => setShowPreview(set ?? !showPreview);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+    <div className="h-screen overflow-hidden">
+      <div className="h-16 w-full bg-gray-300 p-3 fixed z-10">
+        <Controls
+          currentTab={currentTab}
+          setCurrentTab={setCurrentTab}
+          showPreview={showPreview}
+          togglePreview={togglePreview}
+        />
+      </div>
+      <div
+        className={cn('h-full pt-16 overflow-auto', { flex: showPreview })}
+        id="test"
+      >
+        {showPreview ? <Preview /> : <TabHandler tab={currentTab} />}
+      </div>
     </div>
   );
-}
+};
 
 export default App;

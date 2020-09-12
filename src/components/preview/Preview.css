@@ -1,0 +1,55 @@
+.values-grid {
+  display: grid;
+  width: 100%;
+  grid-template-columns: auto;
+  grid-template-rows: 70px 70px 70px 70px 70px 70px 70px;
+  row-gap: 25px;
+  justify-content: center;
+  padding-top: 12px;
+}
+
+.values-grid div {
+  display: flex;
+  flex-direction: row;
+  justify-self: center;
+}
+
+.values-grid div img {
+  padding: 0 3px
+}
+
+.model-image {
+  position: absolute;
+  top: 30px;
+  z-index: -1; 
+}
+
+.model-container {
+  position: relative;
+  width: 415px;
+  min-width: 415px;
+}
+
+.table-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.preview-table {
+  border-collapse: collapse;
+  width: 90%;
+}
+
+.preview-table td, #table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.preview-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4766ee;
+  color: white;
+}
