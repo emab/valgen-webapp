@@ -51,35 +51,6 @@ const PreviewTable: React.FC<Props> = ({
   const classes = useStyles();
   const [rowStyles, setRowStyles] = useState<ValueRowStyle[]>([]);
 
-  const generateValueRowStyles = () => {
-    let newStyles: ValueRowStyle[] = [];
-    personalValues.forEach((val) => {
-      if (currentValues.some((otherVal) => (otherVal.name === val.name))) {
-        newStyles.push({ value: val.name, style: 'bg-purple-300' });
-      }
-      if (idealValues.some((otherVal) => (otherVal.name === val.name))) {
-        newStyles.push({ value: val.name, style: 'bg-blue-300' });
-      }
-    });
-    currentValues.forEach((val) => {
-      if (idealValues.some((otherVal) => (otherVal.name === val.name))) {
-        newStyles.push({ value: val.name, style: 'bg-red-300' });
-      }
-    });
-    personalValues.forEach((val) => {
-      if (currentValues.some((otherVal) => (otherVal.name === val.name))) {
-        if (idealValues.some((otherVal) => (otherVal.name === val.name))) {
-          newStyles = newStyles.filter(
-            (existingVal) => val.name !== existingVal.value
-          );
-
-          newStyles.push({ value: val.name, style: 'bg-green-300' });
-        }
-      }
-    });
-    setRowStyles(newStyles);
-  };
-
   const populateRows = () => {
     const rows: Row[] = [];
     let values: Value[];
@@ -106,10 +77,34 @@ const PreviewTable: React.FC<Props> = ({
   };
 
   useEffect(() => {
-    generateValueRowStyles();
-  }, []);
+    const generateValueRowStyles = () => {
+      let newStyles: ValueRowStyle[] = [];
+      personalValues.forEach((val) => {
+        if (currentValues.some((otherVal) => otherVal.name === val.name)) {
+          newStyles.push({ value: val.name, style: 'bg-purple-300' });
+        }
+        if (idealValues.some((otherVal) => otherVal.name === val.name)) {
+          newStyles.push({ value: val.name, style: 'bg-blue-300' });
+        }
+      });
+      currentValues.forEach((val) => {
+        if (idealValues.some((otherVal) => otherVal.name === val.name)) {
+          newStyles.push({ value: val.name, style: 'bg-red-300' });
+        }
+      });
+      personalValues.forEach((val) => {
+        if (currentValues.some((otherVal) => otherVal.name === val.name)) {
+          if (idealValues.some((otherVal) => otherVal.name === val.name)) {
+            newStyles = newStyles.filter(
+              (existingVal) => val.name !== existingVal.value
+            );
 
-  useEffect(() => {
+            newStyles.push({ value: val.name, style: 'bg-green-300' });
+          }
+        }
+      });
+      setRowStyles(newStyles);
+    };
     setRowStyles([]);
     generateValueRowStyles();
   }, [personalValues, currentValues, idealValues]);

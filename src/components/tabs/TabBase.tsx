@@ -65,7 +65,7 @@ const TabBase: React.FC<Props> = ({
       </div>
       <div
         className={cn('grid grid-cols-3', {
-          ['bg-green-200']: !canSelectValue(),
+          'bg-green-200': !canSelectValue(),
         })}
       >
         {allValues.map((val) => {

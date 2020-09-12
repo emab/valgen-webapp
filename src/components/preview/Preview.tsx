@@ -1,14 +1,13 @@
 import React from 'react';
-import model from '../../img/model.png';
+import { connect } from 'react-redux';
 import redCircle from '../../img/circle-red.svg';
 import circle from '../../img/circle.svg';
-import './Preview.css';
-import { connect } from 'react-redux';
 import { State } from '../../types/State';
 import { Value } from '../../types/Value';
-import PreviewTable from './Table';
 import { Values } from '../../types/Values';
 import Model from './Model';
+import './Preview.css';
+import PreviewTable from './Table';
 
 interface Props {
   personalValues: Value[];
@@ -17,7 +16,11 @@ interface Props {
 }
 
 const ADD_CIRCLE = (limiting: boolean | undefined, key: string) =>
-  limiting ? <img key={key} src={redCircle} /> : <img key={key} src={circle} />;
+  limiting ? (
+    <img key={key} alt="red circle" src={redCircle} />
+  ) : (
+    <img key={key} alt="blue circle" src={circle} />
+  );
 
 const Preview: React.FC<Props> = ({
   personalValues,
