@@ -21,7 +21,6 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     paper: {
       position: 'absolute',
-      width: 500,
       top: '50%',
       left: '50%',
       transform: 'translate(-50%, -50%)',
@@ -78,7 +77,7 @@ const AddValue: React.FC<Props> = ({ open, handleClose }) => {
 
   const classes = useStyles();
   const body = (
-    <div className={`${classes.paper} flex flex-col`}>
+    <div className={`${classes.paper} flex flex-col w-5/6 sm:w-2/5`}>
       <h2>Add Value</h2>
       <div className="flex flex-row">
         <TextField
