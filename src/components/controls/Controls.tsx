@@ -52,20 +52,24 @@ const Controls: React.FC<Props> = ({
 
   const handlePreviewButtonClick = () => {
     togglePreview();
-  }
+  };
 
   const isComplete = (numSelected: number) => numSelected > 9;
 
   return (
     <>
-      <div className="flex justify-between">
-        <div className="flex">
-          <div className="mr-2">
-            <Button color="primary" variant="contained" onClick={handlePreviewButtonClick}>
+      <div className="flex h-24 sm:h-10 justify-between items-center">
+        <div className="flex h-16 sm:h-10 justify-center">
+          <div className="flex mr-2 ">
+            <Button
+              color="primary"
+              variant="contained"
+              onClick={handlePreviewButtonClick}
+            >
               {showPreview ? 'Hide Preview' : 'Show Preview'}
             </Button>
           </div>
-          <div className="mr-2">
+          <div className="flex mr-2">
             <Button
               color="secondary"
               variant="contained"
@@ -82,12 +86,14 @@ const Controls: React.FC<Props> = ({
           </div>
         </div>
         {showPreview && (
-          <Button variant="contained" color="primary" onClick={saveImage}>
-            Save
-          </Button>
+          <div className="flex h-16 sm:h-10">
+            <Button variant="contained" color="primary" onClick={saveImage}>
+              Save
+            </Button>
+          </div>
         )}
         {!showPreview && (
-          <div>
+          <div className="flex flex-col sm:flex-row ">
             <ControlButton
               id={'personal'}
               text="Personal"

@@ -64,13 +64,13 @@ const TabBase: React.FC<Props> = ({
         </h1>
       </div>
       <div
-        className={cn('grid grid-cols-3', {
+        className={cn('grid w-3/5 sm:w-full mx-auto justify-center sm:grid-cols-2 md:grid-cols-3', {
           'bg-green-200': !canSelectValue(),
         })}
       >
         {allValues.map((val) => {
           return (
-            <div key={val.name}>
+            <div key={val.name} className="flex items-center">
               <Checkbox
                 id={val.name}
                 onChange={onToggleValue}

@@ -13,7 +13,7 @@ const App = () => {
 
   return (
     <div className="h-screen overflow-hidden">
-      <div className="h-16 w-full bg-gray-300 p-3 fixed z-10">
+      <div className="h-32 sm:h-16 w-full bg-gray-300 p-3 fixed z-10">
         <Controls
           currentTab={currentTab}
           setCurrentTab={setCurrentTab}
@@ -22,7 +22,7 @@ const App = () => {
         />
       </div>
       <div
-        className={cn('h-full pt-16 overflow-auto', { flex: showPreview })}
+        className={cn('h-full pt-32 sm:pt-16 overflow-auto', { flex: showPreview })}
         id="test"
       >
         {showPreview ? <Preview /> : <TabHandler tab={currentTab} />}
