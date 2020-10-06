@@ -1,5 +1,7 @@
 # Valgen
 
+## http://valgen.devbrown.com/
+
 This is the React part of the [Valgen](https://github.com/emab/valgen) app.
 
 An app to help generate value model diagrams.
